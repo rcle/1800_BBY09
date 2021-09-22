@@ -6,7 +6,7 @@
 
 ## General Info
 This browser based web application to ...
-*Hi my name is Ryan. I'm excited about this project because its fun to work in groups
+*Hi my name is Dennis. I'm excted about this project because git is fun
 	
 ## Technologies
 Technologies used for this project:
