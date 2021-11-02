@@ -14,6 +14,7 @@ function sayHello() {
                 })
         } else {
             // No user is signed in.
+            //hi
         }
     });
 }
