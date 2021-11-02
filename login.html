@@ -61,24 +61,11 @@
     <br/>
     <div class="container">  
         <h1 class="display-4"> Hello! <span id="loginhere">Login Here: </span> </h1>
-        <div class="input-group flex-nowrap">
-            <span class="input-group-text" id="addon-wrapping">Username</span>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-        </div>   
-        <br/>
-        <div class="input-group flex-nowrap">
-            <span class="input-group-text" id="addon-wrapping">Password</span>
-            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
-        </div>
-        <br/>
-        <a href="main.html" class="btn btn-info">Login</a>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
     </div>
 
-    <!-- The surrounding HTML is left untouched by FirebaseUI.
-     Your app may use that space for branding, controls and other customizations.-->
-    <h1>Welcome to My Awesome App</h1>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
+
     
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->

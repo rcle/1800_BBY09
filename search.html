@@ -18,7 +18,7 @@
     <script src="scripts/firebaseAPI.js"></script>
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" href="styles/my_style.css">
+    <link type="text/css" rel="stylesheet" href="styles/my_style.css">
 
 </head>
 
@@ -59,54 +59,89 @@
     </nav>
 
     <!-- welcome and main part of the page -->
-    <div class="container">
-        <p>Come find a restaurant! Or if you want, look through your favourites, you currently have 5!</p>
-        <h3>Budget</h3>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">$</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">$$</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">$$$</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio4">$$$$</label>
-        </div>
-
-        <h3>Rating</h3>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="RatingButton" id="star1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="star1">1</label>
-          
-            <input type="radio" class="btn-check" name="RatingButton" id="star2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="star2">2</label>
-          
-            <input type="radio" class="btn-check" name="RatingButton" id="star3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="star3">3</label>
-
-            <input type="radio" class="btn-check" name="RatingButton" id="star4" autocomplete="off">
-            <label class="btn btn-outline-primary" for="star4">4</label>
-
-            <input type="radio" class="btn-check" name="RatingButton" id="star5" autocomplete="off">
-            <label class="btn btn-outline-primary" for="star5">5</label>
-        </div>
-        <div>
-            <h3>Distance</h3>
-            <input type="range" class="form-range" id="customRange1">  
-        </div>
-        <div>
-            <h3>Max Approved Restaurants</h3>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" aria-label="maximum restaurant" aria-describedby="basic-addon1">
+    <div id="cardContainer">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100">
+              <img src="images/mcdonald.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
               </div>
-        </div>
-        <a href="#" class="btn btn-info">See Restaurants</a>
-
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/FoodDelivery.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/mcdonald.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/FoodDelivery.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/mcdonald.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/FoodDelivery.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">A Restaurant</h5>
+                <p class="card-text">Phone Number: 555-555-5555</p>
+                <p class="card-text">Location: street at streetname</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
     </div>
-
+    </div> 
+    
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
     <!----------------------------------------------->
