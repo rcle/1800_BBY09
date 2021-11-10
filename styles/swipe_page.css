@@ -1,0 +1,23 @@
+#swipeContainer {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: max-content max-content max-content;
+}
+
+#searchbar {
+  grid-row: 1;
+  padding-top: 1%;
+  padding-bottom: 1%; 
+  width: 50%;
+  justify-self: center;
+}
+
+.card {
+  justify-self: center;
+  grid-row: 2;
+}
+
+.panel-body {
+  justify-self: center;
+  grid-row: 3;
+}

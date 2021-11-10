@@ -1,0 +1,18 @@
+#favouritesContainer {
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: max-content max-content;
+}
+
+#searchbar {
+  grid-row: 1;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 50%;
+  justify-self: center;
+}
+
+#cardContainer {
+  grid-row: 2;
+}
