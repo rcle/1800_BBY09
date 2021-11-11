@@ -2,13 +2,29 @@
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: max-content max-content max-content;
+  grid-row-gap: 5%;
 }
 
-#searchbar {
+.countContainer {
   grid-row: 1;
   padding-top: 1%;
   padding-bottom: 1%; 
-  width: 50%;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, max-content);
+}
+
+.likedRestaurants {
+  grid-row: 1;
+}
+
+.counter {
+  grid-row: 2;
+}
+
+.likedText {
+  grid-row: 3;
   justify-self: center;
 }
 
@@ -21,3 +37,4 @@
   justify-self: center;
   grid-row: 3;
 }
+
