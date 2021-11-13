@@ -16,3 +16,7 @@
 #cardContainer {
   grid-row: 2;
 }
+
+#hiddenCard{
+  display:none;
+}

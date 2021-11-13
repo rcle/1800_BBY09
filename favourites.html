@@ -96,77 +96,10 @@
         </form>
       </div>
       <div id="cardContainer">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
+        <div id = "favourite" class="row row-cols-1 row-cols-md-3 g-4">
+          <div id = "hiddenCard" class="col">
             <div class="card h-100">
               <img src="images/mcdonald.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-text">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img
-                src="images/FoodDelivery.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-text">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="images/mcdonald.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-text">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img
-                src="images/FoodDelivery.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-text">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="images/mcdonald.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-text">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img
-                src="images/FoodDelivery.jpg"
-                class="card-img-top"
-                alt="..."
-              />
               <div class="card-body">
                 <h5 class="card-title">A Restaurant</h5>
                 <p class="card-text">Phone Number: 555-555-5555</p>
@@ -198,5 +131,43 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    
+    <script>
+
+      /*
+      adds a favourite card to the favourites page. Element
+      referenced is hidden using css which is why the Id change is 
+      needed.
+      */
+      function addFavourite(){
+        var card = document.getElementsByClassName("col");
+        var newcard = card[0].cloneNode(true)
+        newcard.id = null;
+
+        /*
+        still need to add changing the params within the html.
+        */
+
+        document.getElementById("favourite").appendChild(newcard);
+      }
+
+      /*
+      populates the favourites page with the users
+      favourited restaurants. WIP
+      */
+      window.onload = function(){
+        
+        /*
+        should instead be the get favourite function from
+        DBrequests.js. For loop should iterate through
+        the ids in the array.
+        */
+        for( i = 0; i < 10; i++){
+          addFavourite();
+        }
+      }
+
+
+    </script>
   </body>
 </html>
