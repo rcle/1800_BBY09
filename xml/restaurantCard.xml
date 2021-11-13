@@ -1,9 +1,0 @@
-<div class="card h-100">
-  <img src="images/mcdonald.jpg" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">A Restaurant</h5>
-    <p class="card-text">Phone Number: 555-555-5555</p>
-    <p class="card-text">Location: street at streetname</p>
-    <button type="button" class="btn btn-primary">Favourite</button>
-  </div>
-</div>
