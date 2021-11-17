@@ -5,6 +5,7 @@
   grid-template-rows: max-content max-content;
 }
 
+
 #searchbar {
   grid-row: 1;
   padding-top: 1%;

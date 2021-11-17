@@ -29,19 +29,3 @@ favourites page to populate the data within it
 inpupt: none
 output:array of favourites or undefined
 */
-function getFavourite(){
-
-    firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        const uid = user.uid;
-        db.collection("users").doc(uid).get().then( function (doc){
-            console.log(doc.data().name);
-            document.getElementById("favourite").innerHTML = doc.data().name;
-
-        });
-
-    } else {
-        console.log("no user logged in");
-    }
-    });
-}
