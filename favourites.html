@@ -127,7 +127,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-
+    <!----------MAKE SURE GOOGLE API KEY IS NOT HERE WHEN PUSHING----------------------------------------------------------->
     <script src="scripts/gmapsAPI.js"></script>
     <script src="scripts/firebaseAPI.js"></script>
     <script src="scripts/DBrequests.js"></script>
@@ -139,12 +139,17 @@
     
     <script>
 
+      /*
+      Gets the favourites array stored in the favourite field in the user collection. 
+      The favourite array stores the place_id of restaurants obtained from googlemapsapi.
+      Passes each id in the array to the findPlaceByID function if the user is logged in.
+      */
       function getFavourite(){
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
               const uid = user.uid;
               db.collection("users").doc(uid).get().then( function (doc){
-                doc.data().favourite.forEach(place_id => findPlaceByID(place_id))
+                doc.data().favourite.forEach(place_id => findPlaceByID(place_id , addFavourite))
               });
 
           } else {
@@ -153,19 +158,29 @@
         });
       }
 
-      function findPlaceByID(id){
+      /*
+      finds the name, rating, phone number, address and photo of a place. The place
+      is searched for using the given id and the getDetails function from the 
+      google.maps.places library. Upon recieving the place information, calls the 
+      addFavourite function. 
+
+      input: id, string thats the place_id of a restaurant to be searched for
+      input: callback, Callback function to be used when you get the id results.
+      */
+      function findPlaceByID(id, callback){
           var request = {
               placeId: id,
               fields: ['name', 'rating', 'formatted_phone_number', 'adr_address','photo']
           };
-          var result;
 
           service = new google.maps.places.PlacesService(map);
-          service.getDetails(request, addFavourite);
-
-          return result;
+          service.getDetails(request, callback);
       }
 
+      /*
+      Adds the restaurants passed to the function to the favourite page by updating
+      the DOM and displaying it as a card.
+      */
       function addFavourite(place, status){
           if (status == google.maps.places.PlacesServiceStatus.OK) {
               var card = document.getElementsByClassName("col");
@@ -181,20 +196,26 @@
               newcard.querySelector('.card-title').innerHTML = title ;
               newcard.querySelector('.card-text').innerHTML = details ;
               newcard.querySelector('.card-textaddr').innerHTML = addr ;
-              //newcard.querySelector('.card-image').src = "./images/" + collection + ".jpg";  //hikes.jpg
               newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
 
               //give unique ids to all elements for future use
               newcard.querySelector('.card-title').setAttribute("id", "ctitle" );
               newcard.querySelector('.card-text').setAttribute("id", "ctext" );
               newcard.querySelector('.card-textaddr').setAttribute("id", "ctext" );
-              //newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+
               document.getElementById("favourite").appendChild(newcard);
-              
+          }
+      }
+
+      /*
+      Removes the favourite from the users favourite array from the user collection.
+      the favourite card will be removed from the page only on page refresh
+      */
+      function removeFavourite(){
+      
+      }
 
 
-    }
-}
       window.onload = function() {
         getFavourite();
       };
