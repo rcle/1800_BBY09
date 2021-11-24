@@ -97,6 +97,7 @@
         </div>
 
         <div class="slidecontainer">
+            <h3>Distance</h3>
             <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
             <p>Value: <span id="sliderVal"></span></p>
         </div>
@@ -108,7 +109,7 @@
                 class="form-control" aria-label="maximum restaurant" aria-describedby="basic-addon1" id="apprNum">
               </div>
         </div>
-        <a onclick="getValues()" class="btn btn-info">See Restaurants</a>
+        <a class="btn btn-info" id="seeRest">See Restaurants</a>
 
     </div>
 
@@ -144,6 +145,14 @@
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {
             output.innerHTML = this.value + "km";
+            slider.setAttribute("value", this.value);
+        }
+        
+        // update maxAppr value
+        var approved = document.getElementById("apprNum");
+        approved.oninput = function(){
+            var numberValue = approved.value;
+            approved.setAttribute("value", numberValue);
         }
  
         /*
@@ -202,16 +211,20 @@
  
         // calls the above function to retrieve parameter values
         function getValues(){
-            getBudgetValue();
-            getRatingValue();
-            getDistanceValue();
-            getMaxApprValue();
-            console.log("runs");
-        }
- 
-        document.getElementById("seeRest").addEventListener("click", getValues()).then(window.location.href ="swipe.html");
- 
-         
+                getBudgetValue();
+                getRatingValue();
+                getDistanceValue();
+                getMaxApprValue();
+                return Promise.resolve("values set"); 
+            }
+
+        document.getElementById("seeRest").addEventListener("click", function(){
+                getValues().then(function(){
+                window.location.replace("swipe.html")
+            });
+        });
+
+
     </script>
 
 
