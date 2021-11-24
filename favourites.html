@@ -1,224 +1,221 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project" />
-    <meta name="author" content="BCIT" />
 
-    <!-- Bootstrap, firebase-auth-ui -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-      
-    />
+<head>
+  <meta charset="utf-8" />
+  <title>My BCIT Project</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project" />
+  <meta name="author" content="BCIT" />
 
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css"
-    />
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+  <!-- Bootstrap, firebase-auth-ui -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
 
-    <!-- Optional styles and scripts of your own -->
-    <link type="text/css" href="styles/my_style.css" />
-    <link rel="stylesheet" href="styles/favourites_page.css">
-  </head>
+  <!-- Optional styles and scripts of your own -->
+  <link type="text/css" href="styles/my_style.css" />
+  <link rel="stylesheet" href="styles/favourites_page.css">
+</head>
 
-  <body>
-    <div id='map'></div>
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="main.html">FoodSwipe</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="main.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Favourite</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="history.html">History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Log Out</a>
-            </li>
-          </ul>
-        </div>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+<body>
+  <div id='map'></div>
+  <!-------------------------------------->
+  <!-- The following is HTML for layout -->
+  <!-------------------------------------->
+  <!-- Header Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">FoodSwipe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="main.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Favourite</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="history.html">History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Log Out</a>
+          </li>
+        </ul>
       </div>
-    </nav>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 
-    <!-- Favourites page -->
-    <div id="favouritesContainer">
-      <div id="searchbar">
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            id="favSearch"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-      <div id="cardContainer">
-        <div id = "favourite" class="row row-cols-1 row-cols-md-3 g-4">
-          <div id = "hiddenCard" class="col">
-            <div class="card h-100">
-              <img src="" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">A Restaurant</h5>
-                <p class="card-text">Phone Number: 555-555-5555</p>
-                <p class="card-textaddr">Location: street at streetname</p>
-                <button type="button" class="btn btn-primary">Favourite</button>
-              </div>
+  <!-- Favourites page -->
+  <div id="favouritesContainer">
+    <div id="searchbar">
+      <form class="d-flex">
+        <input class="form-control me-2" id="favSearch" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+    <div id="cardContainer">
+      <div id="favourite" class="row row-cols-1 row-cols-md-3 g-4">
+        <div id="hiddenCard" class="col">
+          <div class="card h-100">
+            <img src="" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">A Restaurant</h5>
+              <p class="card-text">Phone Number: 555-555-5555</p>
+              <p class="card-textaddr">Location: street at streetname</p>
+              <button id="1" type="button" class="btn btn-primary" onclick="toggleFavourite(this.id)">
+                Favourite</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-    <!----------------------------------------------->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
-    <!----------MAKE SURE GOOGLE API KEY IS NOT HERE WHEN PUSHING----------------------------------------------------------->
-    <script src="scripts/gmapsAPI.js"></script>
-    <script src="scripts/firebaseAPI.js"></script>
-    <script src="scripts/DBrequests.js"></script>
-    
+  <!----------------------------------------------->
+  <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
+  <!----------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+  <!----------MAKE SURE GOOGLE API KEY IS NOT HERE WHEN PUSHING----------------------------------------------------------->
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    
-    <script>
-
-      /*
-      Gets the favourites array stored in the favourite field in the user collection. 
-      The favourite array stores the place_id of restaurants obtained from googlemapsapi.
-      Passes each id in the array to the findPlaceByID function if the user is logged in.
-      */
-      function getFavourite(){
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-              const uid = user.uid;
-              db.collection("users").doc(uid).get().then( function (doc){
-                doc.data().favourite.forEach(place_id => findPlaceByID(place_id , addFavourite))
-              });
-
-          } else {
-              console.log("no user logged in");
-            }
-        });
-      }
-
-      /*
-      finds the name, rating, phone number, address and photo of a place. The place
-      is searched for using the given id and the getDetails function from the 
-      google.maps.places library. Upon recieving the place information, calls the 
-      addFavourite function. 
-
-      input: id, string thats the place_id of a restaurant to be searched for
-      input: callback, Callback function to be used when you get the id results.
-      */
-      function findPlaceByID(id, callback){
-          var request = {
-              placeId: id,
-              fields: ['name', 'rating', 'formatted_phone_number', 'adr_address','photo']
-          };
-
-          service = new google.maps.places.PlacesService(map);
-          service.getDetails(request, callback);
-      }
-
-      /*
-      Adds the restaurants passed to the function to the favourite page by updating
-      the DOM and displaying it as a card.
-      */
-      function addFavourite(place, status){
-          if (status == google.maps.places.PlacesServiceStatus.OK) {
-              var card = document.getElementsByClassName("col");
-              var newcard ;
-              newcard = card[0].cloneNode(true);
-              var id = "restaurant";
-              var title = place.name;
-              var details = place.formatted_phone_number;
-              var addr =  place.adr_address;
-              newcard.id = id ;
-            
-              //update title and text and image
-              newcard.querySelector('.card-title').innerHTML = title ;
-              newcard.querySelector('.card-text').innerHTML = details ;
-              newcard.querySelector('.card-textaddr').innerHTML = addr ;
-              newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
-
-              //give unique ids to all elements for future use
-              newcard.querySelector('.card-title').setAttribute("id", "ctitle" );
-              newcard.querySelector('.card-text').setAttribute("id", "ctext" );
-              newcard.querySelector('.card-textaddr').setAttribute("id", "ctext" );
-
-              document.getElementById("favourite").appendChild(newcard);
-          }
-      }
-
-      /*
-      Removes the favourite from the users favourite array from the user collection.
-      the favourite card will be removed from the page only on page refresh
-      */
-      function removeFavourite(){
-      
-      }
+  <script src="scripts/gmapsAPI.js"></script>
+  <script src="scripts/firebaseAPI.js"></script>
+  <script src="scripts/DBrequests.js"></script>
 
 
-      window.onload = function() {
-        getFavourite();
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
+
+  <script>
+
+    /*
+    Gets the favourites array stored in the favourite field in the user collection. 
+    The favourite array stores the place_id of restaurants obtained from googlemapsapi.
+    Passes each id in the array to the findPlaceByID function if the user is logged in.
+    */
+    function getFavourite() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const uid = user.uid;
+          db.collection("users").doc(uid).get().then(function (doc) {
+            doc.data().favourite.forEach(place_id => findPlaceByID(place_id, addFavourite))
+          });
+
+        } else {
+          console.log("no user logged in");
+        }
+      });
+    }
+
+    /*
+    finds the name, rating, phone number, address and photo of a place. The place
+    is searched for using the given id and the getDetails function from the 
+    google.maps.places library. Upon recieving the place information, calls the 
+    addFavourite function. 
+
+    input: id, string thats the place_id of a restaurant to be searched for
+    input: callback, Callback function to be used when you get the id results.
+    */
+    function findPlaceByID(id, callback) {
+      var request = {
+        placeId: id,
+        fields: ['name', 'rating', 'formatted_phone_number', 'adr_address', 'photo', 'place_id']
       };
-    </script>
-  </body>
+
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, callback);
+    }
+
+    /*
+    Adds the restaurants passed to the function to the favourite page by updating
+    the DOM and displaying it as a card.
+    */
+    function addFavourite(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        var card = document.getElementsByClassName("col");
+        var newcard;
+        newcard = card[0].cloneNode(true);
+        var id = "restaurant";
+        var title = place.name;
+        var details = place.formatted_phone_number;
+        var addr = place.adr_address;
+        newcard.id = id;
+        //update title and text and image
+        newcard.querySelector('.card-title').innerHTML = title;
+        newcard.querySelector('.card-text').innerHTML = details;
+        newcard.querySelector('.card-textaddr').innerHTML = addr;
+        newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
+
+        //give unique ids to all elements for future use
+        newcard.querySelector('.card-title').setAttribute("id", "ctitle");
+        newcard.querySelector('.card-text').setAttribute("id", "ctext");
+        newcard.querySelector('.card-textaddr').setAttribute("id", "ctext");
+        newcard.querySelector('.btn').setAttribute("id", place.place_id);
+
+        document.getElementById("favourite").appendChild(newcard);
+      }
+    }
+
+    /*
+    Removes favourite from the user's favourite collection if it is in the collection.
+    Adds the favourite to the user's favourite collection if  it is not in the collection.
+    */
+    function toggleFavourite(id) {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          var userField = db.collection("users").doc(user.uid);
+          userField.get().then((doc) =>{
+            var favArray = doc.data().favourite;
+            place_idIndex  =  favArray.indexOf(id);
+
+            if(place_idIndex > -1){
+              favArray.splice(place_idIndex, 1);
+            } else {
+              favArray.push(id);
+            }
+
+            return userField.update({
+                favourite: favArray
+                })
+                .then(() => {
+                  console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                  // The document probably doesn't exist.
+                  console.error("Error updating document: ", error);
+                });
+          })
+        } else {
+          console.log("no user logged in");
+        }
+      });
+    }
+
+
+    window.onload = function () {
+      getFavourite();
+    };
+  </script>
+</body>
+
 </html>
