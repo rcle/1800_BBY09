@@ -103,12 +103,14 @@ function addFavourite(place, status) {
         var title = place.name;
         var details = place.formatted_phone_number;
         var addr = place.adr_address;
+        var rating = place.rating;
         newcard.id = title;
 
         //update title card text and images
         newcard.querySelector('.card-title').innerHTML = title;
         newcard.querySelector('.card-text').innerHTML = details;
         newcard.querySelector('.card-textaddr').innerHTML = addr;
+        newcard.querySelector('.card-rating').innerHTML = "Rating: " + rating;
         newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
 
         //give unique ids to all elements for future use
