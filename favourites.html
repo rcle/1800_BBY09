@@ -44,9 +44,6 @@
             <a class="nav-link active" href="#">Favourite</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="history.html">History</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="index.html">Log Out</a>
           </li>
         </ul>
@@ -63,8 +60,9 @@
           <h5 class="card-title">A Restaurant</h5>
           <p class="card-text">Phone Number: 555-555-5555</p>
           <p class="card-textaddr">Location: street at streetname</p>
-          <button id="1" type="button" class="btn btn-primary" onclick="toggleFavourite(this.id)">
-            Favourite</button>
+          <button id="1" type="button" class="btn" onclick="toggleFavourite(this.id)" >
+            <img id="2" class="favButton" src="images/heartFilled.png" onclick="imageClick(this.id)"/>
+          </button>
         </div>
       </div>
     </div>
@@ -88,6 +86,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
   <!----------MAKE SURE GOOGLE API KEY IS NOT HERE WHEN PUSHING----------------------------------------------------------->
+
   <script src="scripts/gmapsAPI.js"></script>
   <script src="scripts/firebaseAPI.js"></script>
   <script src="scripts/DBrequests.js"></script>

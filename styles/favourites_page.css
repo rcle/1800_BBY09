@@ -27,6 +27,23 @@
   display:none;
 }
 
+.favButton{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.btn{
+  padding: 0;
+  margin: 0;
+  transition: none;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
 @media only screen and (max-width: 767px) {
   .card-img-top {
     width: 100%;
