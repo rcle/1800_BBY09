@@ -1,8 +1,23 @@
+
+.navbar{
+  background-color: #2f2fa2;
+  color: white;
+}
+
+
+
+.navbar-toggler{
+  border: none;
+}
 #favouritesContainer {
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: max-content max-content;
+  padding-right: 2em;
+  padding-left: 2em;
+  padding-top: 1em;
+  
 }
 
 .card-img-top {
