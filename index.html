@@ -18,7 +18,7 @@
      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" href="styles/my_style.css">
+    <link rel = "stylesheet" type="text/css" href="styles/index_page.css">
 
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
@@ -26,53 +26,45 @@
 
 <body>
 
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">FoodSwipe</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <!-- welcome and main part of the page -->
-    <div class="container">
-        <h1 class="display-4"> Welcome to Foodswipe! </h1>
-        <img alt="picture of people eating takout" src="images/FoodDelivery.jpg"/>
-        <p>Having trouble deciding what to eat? Taking too login
-            to pick a meal with friends? No worries Foodswipe is here!
-            Foodswipe will help you pick a restaurant by giving you options,
-            like Tinder you can swipe options you like and dislike. After liking
-            a certain amount of restaurants we'll reccomend you a restaurant from
-            that list!
-        </p>
-        <a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</a>
+
+
+    <div id="wordContainer">
+        <img id = "backgroundImage" alt="picture of people eating takout" src="images/indexBackground2.jpeg"/>
+        <div class="container-content">
+            <div class="p-5 mb-4  rounded-3">
+                <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">Welcome to FoodSwipe!</h1>
+                  <p class="col-md-8 fs-4">
+                        Having trouble deciding what to eat? Taking too login
+                        to pick a meal with friends? No worries Foodswipe is here!
+                        Foodswipe will help you pick a restaurant by giving you options,
+                        like Tinder you can swipe options you like and dislike. After liking
+                        a certain amount of restaurants we'll reccomend you a restaurant from
+                        that list!
+                </p>
+                    <a id= "login-button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Login/Signup</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+    <div id="hiddenLogin">
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Login Here</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login Here</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="firebaseui-auth-container"></div>
+                <div id="loader">Loading...</div>
+            </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <div id="firebaseui-auth-container"></div>
-            <div id="loader">Loading...</div>
-        </div>
-        </div>
-    </div>
     </div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
@@ -85,7 +77,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="scripts/Index.js"></script>
     <!-- Link to the api keys for your firebase project -->
+    <script>
+        window.onload = moveLogin;
+        window.onresize = moveLogin;
+
+
+    </script>
 </body>
 
 </html>

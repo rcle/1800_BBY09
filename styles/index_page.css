@@ -1,1 +1,75 @@
-body{}
+@media only screen {
+    html, body{
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(4 , 1fr);
+        grid-template-rows: 100%;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+    }
+    
+    #wordContainer{
+        display: grid;
+        margin: 0;
+        padding: 0;
+        color: white;
+        grid-column: 1 / -1;
+    }
+
+    #backgroundImage {
+        opacity: 0.5;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        min-height: 100%;
+
+    }
+    
+    .container-content {
+        position: relative;
+    }
+    #hiddenLogin{
+        display: none;
+
+    }
+    .btn{
+        background-color: #2f2fa2;
+        border: #2f2fa2;
+        color: white;
+    }
+    .btn:hover{
+        background-color: #414199;
+        border: #414199;
+        color: white;
+    }
+}
+
+@media only screen and (min-width: 1000px){
+    #hiddenLogin{
+        display: grid;
+        grid-column: 3 / -1;
+        grid-row: 1 / -1;
+        background-color: #2f2fa2;
+    }
+    #backgroundImage {
+        width: 50%;
+    }
+    #wordContainer{
+        display: grid;
+        margin: 0;
+        padding: 0;
+        color: white;
+        grid-column: 1 / span 2;
+    }
+    #login-button{
+        display:none;
+    }
+    #firebaseui-auth-container{
+        align-self: center;
+    }
+}
