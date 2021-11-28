@@ -1,3 +1,9 @@
+
+.navbar{
+  background-color: #2f2fa2;
+  color: white;
+}
+
 #swipeContainer {
   display: grid;
   grid-template-columns: 100%;

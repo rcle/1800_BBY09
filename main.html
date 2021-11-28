@@ -99,7 +99,7 @@
         <div class="slidecontainer">
             <h3>Distance</h3>
             <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
-            <p>Value: <span id="sliderVal"></span></p>
+            <p>Value: <span value ="" id="sliderVal"></span></p>
         </div>
 
         <div>
@@ -132,6 +132,33 @@
     <!--------------------------------------------------------------------->
     <script>
         getName();
+
+        // calls loadLocal function then clears local storage
+        window.onload = (event) => {
+            loadLocal();   
+            window.localStorage.clear();
+        }
+
+        //fills parameter values with most recently set values. 
+        function loadLocal() {
+            if (localStorage.length > 0) {
+                var budgetToCheck = document.getElementsByName("BudgetButton");
+                var budgetButtonIndex = window.localStorage.getItem("budget") - 1;
+                budgetToCheck[budgetButtonIndex].checked = true;
+
+                var ratingToCheck = document.getElementsByName("RatingButton");
+                var ratingButtonIndex = window.localStorage.getItem("rating") - 1;
+                ratingToCheck[ratingButtonIndex].checked = true;
+
+                var slider = document.getElementById("sliderVal");
+                var sliderClass = document.getElementsByClassName("slider");
+                slider.innerHTML = localStorage.getItem("distance");
+                sliderClass[0].setAttribute("value", localStorage.getItem("distance"));
+
+                var maxApprCheck = document.getElementById("apprNum");
+                maxApprCheck.setAttribute("value", localStorage.getItem("maxAppr"));
+            }
+        }
  
         //global var for budget selection
         //var budgetSelection;
