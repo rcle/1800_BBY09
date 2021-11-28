@@ -103,12 +103,14 @@ function addFavourite(place, status) {
         var title = place.name;
         var details = place.formatted_phone_number;
         var addr = place.adr_address;
+        var rating = place.rating;
         newcard.id = title;
 
         //update title card text and images
         newcard.querySelector('.card-title').innerHTML = title;
         newcard.querySelector('.card-text').innerHTML = details;
         newcard.querySelector('.card-textaddr').innerHTML = addr;
+        newcard.querySelector('.card-rating').innerHTML = "Rating: " + rating;
         newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
 
         //give unique ids to all elements for future use
@@ -116,8 +118,19 @@ function addFavourite(place, status) {
         newcard.querySelector('.card-text').setAttribute("id", "ctext");
         newcard.querySelector('.card-textaddr').setAttribute("id", "ctext");
         newcard.querySelector('.btn').setAttribute("id", place.place_id);
-
+        newcard.querySelector('.favButton').setAttribute("id", "favButton" + title);
         document.getElementById("favourite").appendChild(newcard);
+    }
+}
+
+function imageClick(id){
+    var image = document.getElementById(id);
+    heartFilled = "images/heartFilled.png";
+    heartOutline = "images/heartoutline.png";
+    if(image.src.indexOf(heartFilled) > -1){
+        image.setAttribute("src" , heartOutline);
+    }else{
+        image.setAttribute("src" , heartFilled);
     }
 }
 
