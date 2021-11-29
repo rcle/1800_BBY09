@@ -1,46 +1,127 @@
+#swipePageBody{
+  display: grid;
+  grid-template-rows: max-content max-content max-content max-content 5%;
+  grid-row-gap: 3%
+}
+
+.btn{
+  background-color: #2f2fa2;
+}
 
 .navbar{
+  grid-row: 1;
   background-color: #2f2fa2;
   color: white;
 }
 
+#userHeader{
+  grid-row: 2;
+  text-align: center;
+}
+
 #swipeContainer {
+  grid-row: 3;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: max-content max-content max-content;
-  grid-row-gap: 5%;
+  grid-template-columns: 25% 50% 25%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#backButtonContainer{
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+  width: 70%;
+}
+
+#theRestCards{
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+}
+
+#favBtn{
+  background-color: white;
+  border: none;
+}
+
+#favBtnImg{
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .countContainer {
-  grid-row: 1;
+  grid-column: 3;
   padding-top: 1%;
   padding-bottom: 1%; 
   justify-self: center;
+  align-self: center;
+  width: 70%;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(3, max-content);
+  grid-template-rows: repeat(4, max-content);
+  justify-items: center;
+  border: 2px solid #2f2fa2;
+  border-radius: 5%;
+  color: #2f2fa2;
 }
 
-.likedRestaurants {
+#liked {
   grid-row: 1;
 }
 
-.counter {
+#likedText{
   grid-row: 2;
+  text-align: center;
 }
 
-.likedText {
+#toApprove{
   grid-row: 3;
-  justify-self: center;
 }
 
-.card {
-  justify-self: center;
-  grid-row: 2;
+#toApproveText{
+  grid-row: 4;
+  text-align: center;
 }
 
-.panel-body {
+#paramButtons{
+  grid-row: 4;
   justify-self: center;
-  grid-row: 3;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+}
+
+#thumbUp{
+  align-self: center;
+  justify-self: center;
+  grid-column: 1;
+}
+
+#thumbDown{
+  align-self: center;
+  justify-self: center;
+  grid-column: 3;
+}
+
+#thumbDown:hover{
+  background: red;
+}
+
+#thumbUpImg{
+  padding: 0%;
+  max-width: 70%;
+  justify-self: center;
+  align-self: center;
+}
+
+#thumbDownImg{
+  padding: 0%;
+  max-width: 70%;
+  justify-self: center;
+  align-self: center;
+}
+
+#swipeFooter{
+  grid-row: 5;
 }
 

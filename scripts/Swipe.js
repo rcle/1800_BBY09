@@ -128,6 +128,7 @@ function upIndex(){
     foundRestIndex++;
 }
 
+
 function findPlaceByID(id, callback) {
     var request = {
         placeId: id,
@@ -138,6 +139,9 @@ function findPlaceByID(id, callback) {
     service.getDetails(request, callback);
 }
 
+function checkResultsIndex(){
+
+}
 
 // function to fill card with details of results array one position at a time
 function showRest() {

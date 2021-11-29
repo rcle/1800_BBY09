@@ -1,0 +1,103 @@
+#mainPageContainer{
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  grid-row-gap: 2%;
+}
+
+.btn{
+  border: 1px #2f2fa2 solid;
+  border-radius: 10%;
+  background-color: white;
+  color: #2f2fa2;
+}
+
+.btn:hover{
+  background-color: #2f2fa2;
+  color: white;
+}
+
+.btn:checked{
+  background-color: #2f2fa2;
+  color: white;
+}
+
+.navbar{
+  grid-row: 1;
+  background-color: #2f2fa2;
+  color: white;
+}
+
+#mainUnderNavContainer{
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: repeat(9, max-content);
+  grid-row-gap: 2%
+}
+
+#mainPageHeader{
+  grid-row: 1;
+  grid-column: 2;
+  text-align: center;
+}
+
+#budgetHeader{
+  grid-row: 2;
+  grid-column: 2;
+  text-align: center;
+}
+
+#budgetBtnGrp{
+  grid-row: 3;
+  grid-column: 2;
+  justify-self: center;
+}
+
+#ratingHeader{
+  grid-row: 4;
+  grid-column: 2;
+  text-align: center;
+}
+
+#ratingBtnGrp{
+  grid-row: 5;
+  grid-column: 2;
+  justify-self: center;
+}
+
+.slidecontainer{
+  grid-row: 6;
+  grid-column: 2;
+  text-align: center;
+}
+
+#maxApprContainer{
+  grid-row: 7;
+  grid-column: 2;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  grid-template-rows: repeat(3, max-content);
+}
+
+
+#maxApprInput{
+  width: 70%;
+  justify-self: center;
+}
+
+
+#seeRest{
+  grid-row: 8;
+  grid-column: 2;
+  background-color: #2f2fa2;
+  color: white;
+  width: max-content;
+  justify-self: center;
+}
+
+footer{
+  grid-row: 9;
+  grid-column: 2;
+  height: 20px;
+}

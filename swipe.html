@@ -35,102 +35,116 @@
   </head>
 
   <body>
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
     <!-- invisible div to initialize map -->
     <div id="map"></div>
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="main.html">FoodSwipe</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="main.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="favourites.html">Favourite</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Log Out</a>
-            </li>
-          </ul>
+    <div id="swipePageBody">
+      <!-------------------------------------->
+      <!-- The following is HTML for layout -->
+      <!-------------------------------------->
+      <!-- Header Navigation Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="main.html">FoodSwipe</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="favourites.html">Favourite</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Log Out</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+      </nav>
 
-    <!-- Swiping page -->
-    <div class="container-fluid bg-dark text-light p-1">
-      <div class="container bg-dark p-1">
-        <h1 class="display-4">Hello, <span id="name-goes-here"></span></h1>
-        <hr />
-        <p>Start swiping!</p>
-      </div>
-    </div>
-
-    <div id="backButtonContainer">
-      <button onclick="toParam()" type="button" class="btn btn-primary">Parameter Selection</button>
-    </div>
-
-    <div id="swipeContainer">
-      <div class="countContainer">
-        <i class="likedRestaurants"
-          ><img src="./images/thumbup.png" alt="thumbup"
-        /></i>
-        <p id="checkBtn">0</p>
-        <p class="likedText">Liked Restaurants</p>
+      <!-- Swiping page -->
+      <div class="container-fluid text-dark" id="userHeader">
+        <div class="container p-1">
+          <h2 class="display-6">Hello, <span id="name-goes-here"></span></h2>
+          <h4>Start swiping!</h4>
+        </div>
       </div>
 
-      <div class="card" style="width: 18rem">
-        <div id="hiddenCard" class="col">
-          <img src="#" class="card-img-top" alt="mcdonald" />
-          <div class="card-body">
-            <h5 class="card-title" id="restCard">A Restaurant</h5>
-            <p class="card-text">Phone Number: 555-555-5555</p>
-            <p class="card-textaddr">Location: street at streetname</p>
-            <button onclick="setFavourite()" type="button" class="btn btn-primary">Favourite</button>
+      <div id="swipeContainer">
+        <div id="backButtonContainer">
+          <button onclick="toParam()" type="button" class="btn btn-primary">
+            Back to Parameter Selection
+          </button>
+        </div>
+
+        <div class="countContainer">
+          <p id="liked">0</p>
+          <p id="likedText">Liked Restaurants</p>
+          <p id="toApprove">5</p>
+          <p id="toApproveText">Restaurants Needed</p>
+        </div>
+
+        <div class="card" id="theRestCards" style="width: 70%">
+          <div id="hiddenCard" class="col">
+            <img
+              src="/images/mcdonald.jpg"
+              class="card-img-top"
+              alt="mcdonald"
+            />
+            <div class="card-body">
+              <h5 class="card-title" id="restCard">A Restaurant</h5>
+              <p class="card-text">Phone Number: 555-555-5555</p>
+              <p class="card-textaddr">Location: street at streetname</p>
+              <button
+                onclick="setFavourite()"
+                type="button"
+                class="btn btn-primary"
+                id="favBtn"
+              >
+                <img
+                  id="favBtnImg"
+                  class="favButton"
+                  src="images/heartFilled.png"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="panel-body">
+      <div class="panel-body" id="paramButtons">
         <button
           type="button"
           onclick="upCounter()"
           class="btn btn-info btn-circle btn-xl"
+          id="thumbUp"
         >
-          <i class="fa fa-heart"></i>
+          <img src="/images/thumbUpLight.png" alt="Like!" id="thumbUpImg" />
         </button>
-        <button type="button" class="btn btn-warning btn-circle btn-xl">
-          <i class="fa fa-times"></i>
+        <button
+          type="button"
+          class="btn btn-warning btn-circle btn-xl"
+          id="thumbDown"
+        >
+          <img
+            src="/images/thumbDownLight.png"
+            alt="Dislike!"
+            id="thumbDownImg"
+          />
         </button>
       </div>
+
+      <footer id="swipeFooter"></footer>
     </div>
 
     <!----------------------------------------------->
@@ -148,8 +162,10 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 
     <!-- remove GOOGLE API BEFORE PUSHING -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDgGf1bQFZEeFgtp-tsJz3Qu9iksttSDw&libraries=places">
-    </script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDgGf1bQFZEeFgtp-tsJz3Qu9iksttSDw&libraries=places"
+    ></script>
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
 
@@ -158,65 +174,65 @@
     <!--------------------------------------------------------------------->
     <script src="scripts/Swipe.js"></script>
     <script>
+      function insertName() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            currentUser = db.collection("users").doc(user.uid);
+            currentUser.get().then((userDoc) => {
+              var user_Name = userDoc.data().name;
+              $("#name-goes-here").text(user_Name);
+            });
+          } else {
+            // No user is signed in.
+          }
+        });
+      }
 
-            function insertName() {
-              firebase.auth().onAuthStateChanged((user) => {
-                if (user) {
-                  currentUser = db.collection("users").doc(user.uid);
-                  currentUser.get().then((userDoc) => {
-                    var user_Name = userDoc.data().name;
-                    $("#name-goes-here").text(user_Name);
-                  });
-                } else {
-                  // No user is signed in.
-                }
+      window.onload = function () {
+        insertName();
+        initMap();
+        showRest();
+      };
+
+      function toParam() {
+        window.location.replace("main.html");
+      }
+
+      function upCounter() {
+        console.log("upcounter working");
+        var element = document.getElementById("liked");
+        var value = element.innerHTML;
+        ++value;
+        console.log(value);
+        document.getElementById("liked").innerHTML = value;
+      }
+
+      //find PlaceIDs that meet the minimum parameter requirements(if too difficult, must be exclusively in the chosen parameter)
+      function findPlaceID() {}
+
+      function setFavourite() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            var userField = db.collection("users").doc(user.uid);
+            return userField
+              .update({
+                favourites: firebase.firestore.FieldValue.arrayUnion(
+                  document.getElementById("restCard").getAttribute("value")
+                ),
+              })
+              .then(() => {
+                console.log("Document successfully updated!");
+              })
+              .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
               });
-            }
-
-            window.onload = function() {
-              insertName();
-              initMap();
-              showRest();
-            };
-
-            function toParam(){
-              window.location.replace("main.html");
-            }
-
-
-            function upCounter(){
-              var element = document.getElementById("checkBtn");
-              var value = element.innerHTML;
-              ++value;
-              console.log(value);
-              document.getElementById("checkBtn").innerHTML = value;
-            }
-
-            //find PlaceIDs that meet the minimum parameter requirements(if too difficult, must be exclusively in the chosen parameter)
-            function findPlaceID(){
-
-            }
-
-            function setFavourite(){
-              firebase.auth().onAuthStateChanged((user) => {
-                if (user) {
-                  var userField = db.collection("users").doc(user.uid);
-                  return userField.update({
-                      favourites: firebase.firestore.FieldValue.arrayUnion(document.getElementById("restCard").getAttribute("value"))
-                  })
-                  .then(() => {
-                      console.log("Document successfully updated!");
-                  })
-                  .catch((error) => {
-                      // The document probably doesn't exist.
-                      console.error("Error updating document: ", error);
-                  });
-                console.log("Document written with ID: ", docRef.id);
-                } else {
-                    console.log("no user logged in");
-                  }
-              });
-            }
+            console.log("Document written with ID: ", docRef.id);
+          } else {
+            console.log("no user logged in");
+          }
+        });
+      }
     </script>
   </body>
 </html>

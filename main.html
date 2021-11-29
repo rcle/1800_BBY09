@@ -21,16 +21,17 @@
     <!-- Optional styles and scripts of your own -->
     <link type="text/css" href="styles/my_style.css">
     <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/main.css">
 
 </head>
 
 <body>
-
+<div id="mainPageContainer">
     <!-------------------------------------->
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="main.html">FoodSwipe</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -53,33 +54,30 @@
                     </li>
                 </ul>
             </div>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </nav>
 
     <!-- welcome and main part of the page -->
-    <div class="container">
-        <h2> Hey <span id = "name"></span> come find a restaurant! Or if you want, look through your favourites, you currently have 5!</p></h2>
-        <h3>Budget</h3>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" value="1" class="btn-check" name="BudgetButton" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">$</label>
+    <div class="container" id="mainUnderNavContainer">
+        <h2 id="mainPageHeader"> Hey <span id = "name"></span>, Find a restaurant!</h2>
+        
+        <h3 id="budgetHeader">Budget</h3>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="budgetBtnGrp">
+            <input type="radio" value="1" class="btn-check budgetBtn" name="BudgetButton" id="btnradio1" autocomplete="off" checked>
+            <label class="btn" for="btnradio1">$</label>
           
-            <input type="radio" value="2" class="btn-check" name="BudgetButton" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">$$</label>
+            <input type="radio" value="2" class="btn-check budgetBtn" name="BudgetButton" id="btnradio2" autocomplete="off">
+            <label class="btn" for="btnradio2">$$</label>
           
-            <input type="radio" value="3" class="btn-check" name="BudgetButton" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">$$$</label>
+            <input type="radio" value="3" class="btn-check budgetBtn" name="BudgetButton" id="btnradio3" autocomplete="off">
+            <label class="btn" for="btnradio3">$$$</label>
 
-            <input type="radio" value="4" class="btn-check" name="BudgetButton" id="btnradio4" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio4">$$$$</label>
+            <input type="radio" value="4" class="btn-check budgetBtn" name="BudgetButton" id="btnradio4" autocomplete="off">
+            <label class="btn" for="btnradio4">$$$$</label>
         </div>
 
-        <h3>Rating</h3>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <h3 id="ratingHeader">Rating</h3>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="ratingBtnGrp">
             <input type="radio" value="1" class="btn-check" name="RatingButton" id="star1" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="star1">1</label>
           
@@ -102,16 +100,17 @@
             <p>Value: <span value ="" id="sliderVal"></span></p>
         </div>
 
-        <div>
+        <div id="maxApprContainer">
             <h3>Max Approved Restaurants</h3>
-            <div class="input-group mb-3">
+            <div class="input-group mb-3" id="maxApprInput">
                 <input type="number" min="2" max="10" value="5" 
                 class="form-control" aria-label="maximum restaurant" aria-describedby="basic-addon1" id="apprNum">
               </div>
         </div>
-        <a class="btn btn-info" id="seeRest">See Restaurants</a>
-
+        <button class="btn btn-info" id="seeRest">See Restaurants</button>
+        <footer></footer>
     </div>
+</div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
