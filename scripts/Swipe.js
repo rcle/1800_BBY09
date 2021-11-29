@@ -22,7 +22,6 @@ function getRestaurants(location){
     var thousand = 250;
     var currentLocation = new google.maps.LatLng(location.lat, location.long);
     map = new google.maps.Map(document.getElementById('map'), {center: currentLocation, zoom: 15});
-    console.log(distanceFromCurrent);
     var request = {
         location: currentLocation,
         radius: (distanceFromCurrent * thousand).toString(),
@@ -36,13 +35,11 @@ function getRestaurants(location){
 
 //callback function assigns results of place search to foundRest
 function callback(results, status){
-    console.log(status);
     if (status == google.maps.places.PlacesServiceStatus.OK){
         results.forEach(element => {
           foundRest.push(element.place_id)
         });
     }
-    console.log(foundRest);
     findCardInfo();
 }
 //turns price_level from number to $-$$$$ value
@@ -84,25 +81,30 @@ function upCounter() {
   var value = element.innerHTML;
   var maxApprove = document.getElementById("toApprove").innerHTML;
 
-
+  ++value;
+  document.getElementById("liked").innerHTML = value;
   var restaurantId = document.getElementById("restCard").getAttribute("value");
-  console.log(restaurantId);
+
   if(value == maxApprove){
     restaurantId = acceptedRest[Math.floor(Math.random() * acceptedRest.length)];
     foundRest = [restaurantId]
     foundRestIndex = 0;
+    
     findCardInfo();
+    document.getElementsByClassName("countContainer")[0].style.display = "none";
+    document.getElementsByClassName("panel-body")[0].style.display = "none";
+    document.getElementById("swiping").innerHTML = "Found you a restaurant!";
+
+    
   }else if (value > maxApprove) {
     return 
   } 
   else{
-    ++value;
+    acceptedRest.push(restaurantId);
     findCardInfo();
 
   }
-  document.getElementById("liked").innerHTML = value;
-
-
+  
 
 }
 
@@ -138,7 +140,6 @@ function findCardInfo(){
 
 // function to fill card with details of results array one position at a time
 function updateCard(place) {
-        console.log("updateCarrd callled");
         container  =  document.getElementById("theRestCards");
         container.style.display = "grid";
         card = document.getElementsByClassName("col")[0];
@@ -151,7 +152,7 @@ function updateCard(place) {
           title = place.name;
           details = place.formatted_phone_number;
           addr = place.adr_address;
-          rating = place.rating;
+          rating = "rating: " + place.rating;
           value = place.place_id;
           card.querySelector(".card-title").setAttribute("value" , value);
           card.querySelector(".card-img-top").src = place.photos[0].getUrl();
@@ -199,7 +200,6 @@ function setFavourite(id) {
           // The document probably doesn't exist.
           console.error("Error updating document: ", error);
         });
-      console.log("Document written with ID: ", docRef.id);
     } else {
       console.log("no user logged in");
     }
