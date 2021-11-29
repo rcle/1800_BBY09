@@ -126,7 +126,7 @@ function addFavourite(place, status) {
 function imageClick(id){
     var image = document.getElementById(id);
     heartFilled = "images/heartFilled.png";
-    heartOutline = "images/heartoutline.png";
+    heartOutline = "images/heartOutline.png";
     if(image.src.indexOf(heartFilled) > -1){
         image.setAttribute("src" , heartOutline);
     }else{
@@ -180,10 +180,5 @@ function toggleFavourite(id) {
 }
 
 
-/*
-triggesr the getFavourite function when the page loads.
-*/
-window.onload = function () {
-    getFavourite();
-};
+
 

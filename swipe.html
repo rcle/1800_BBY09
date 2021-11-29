@@ -62,9 +62,6 @@
                 <a class="nav-link" href="favourites.html">Favourite</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">History</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="index.html">Log Out</a>
               </li>
             </ul>
@@ -102,11 +99,12 @@
               alt="mcdonald"
             />
             <div class="card-body">
-              <h5 class="card-title" id="restCard">A Restaurant</h5>
+              <h5 class="card-title" id="restCard" value ="">A Restaurant</h5>
               <p class="card-text">Phone Number: 555-555-5555</p>
               <p class="card-textaddr">Location: street at streetname</p>
+              <p class="card-rating">Location: street at streetname</p>
               <button
-                onclick="setFavourite()"
+                onclick="setFavourite(this.id)"
                 type="button"
                 class="btn btn-primary"
                 id="favBtn"
@@ -114,7 +112,8 @@
                 <img
                   id="favBtnImg"
                   class="favButton"
-                  src="images/heartFilled.png"
+                  src="images/heartOutline.png"
+                  onclick="imageClick(this.id)"
                 />
               </button>
             </div>
@@ -135,6 +134,7 @@
           type="button"
           class="btn btn-warning btn-circle btn-xl"
           id="thumbDown"
+          onclick="findCardInfo()"
         >
           <img
             src="/images/thumbDownLight.png"
@@ -191,48 +191,15 @@
       window.onload = function () {
         insertName();
         initMap();
-        showRest();
       };
 
       function toParam() {
         window.location.replace("main.html");
       }
 
-      function upCounter() {
-        console.log("upcounter working");
-        var element = document.getElementById("liked");
-        var value = element.innerHTML;
-        ++value;
-        console.log(value);
-        document.getElementById("liked").innerHTML = value;
-      }
 
-      //find PlaceIDs that meet the minimum parameter requirements(if too difficult, must be exclusively in the chosen parameter)
-      function findPlaceID() {}
 
-      function setFavourite() {
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            var userField = db.collection("users").doc(user.uid);
-            return userField
-              .update({
-                favourites: firebase.firestore.FieldValue.arrayUnion(
-                  document.getElementById("restCard").getAttribute("value")
-                ),
-              })
-              .then(() => {
-                console.log("Document successfully updated!");
-              })
-              .catch((error) => {
-                // The document probably doesn't exist.
-                console.error("Error updating document: ", error);
-              });
-            console.log("Document written with ID: ", docRef.id);
-          } else {
-            console.log("no user logged in");
-          }
-        });
-      }
+
     </script>
   </body>
 </html>

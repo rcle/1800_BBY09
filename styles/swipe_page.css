@@ -14,6 +14,28 @@
   color: white;
 }
 
+
+.card button{
+  padding: 0;
+  margin: 0;
+  transition: none;
+  background-color: white;
+  border: none;
+}
+
+.card button:hover {
+  outline: none;
+  box-shadow: none;
+  background-color: white;
+}
+
+.card button:focus {
+  outline: none;
+  box-shadow: none;
+  border:none;
+  background-color: white;
+}
+
 #userHeader{
   grid-row: 2;
   text-align: center;
@@ -38,6 +60,7 @@
   grid-column: 2;
   grid-row: 1;
   justify-self: center;
+  display: none;
 }
 
 #favBtn{
@@ -125,3 +148,8 @@
   grid-row: 5;
 }
 
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
