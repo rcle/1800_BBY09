@@ -37,7 +37,9 @@ function getRestaurants(location){
 function callback(results, status){
     if (status == google.maps.places.PlacesServiceStatus.OK){
         results.forEach(element => {
-          foundRest.push(element.place_id)
+          if( element.rating >= window.localStorage.getItem("rating")){
+            foundRest.push(element.place_id);
+          }
         });
     }
     findCardInfo();
@@ -75,27 +77,23 @@ function toParam() {
   window.location.replace("main.html");
 }
 
+function setToApprove(){
+  document.getElementById("toApprove").innerHTML = window.localStorage.getItem("maxAppr");
+}
+
 function upCounter() {
 
   var element = document.getElementById("liked");
   var value = element.innerHTML;
   var maxApprove = document.getElementById("toApprove").innerHTML;
-
+  var restaurantId = document.getElementById("restCard").getAttribute("value");
+  
   ++value;
   document.getElementById("liked").innerHTML = value;
-  var restaurantId = document.getElementById("restCard").getAttribute("value");
 
-  if(value == maxApprove){
-    restaurantId = acceptedRest[Math.floor(Math.random() * acceptedRest.length)];
-    foundRest = [restaurantId]
-    foundRestIndex = 0;
-    
-    findCardInfo();
-    document.getElementsByClassName("countContainer")[0].style.display = "none";
-    document.getElementsByClassName("panel-body")[0].style.display = "none";
-    document.getElementById("swiping").innerHTML = "Found you a restaurant!";
 
-    
+  if(value == maxApprove || foundRestIndex == foundRest.length){
+    randomizeRestaurant();
   }else if (value > maxApprove) {
     return 
   } 
@@ -105,7 +103,23 @@ function upCounter() {
 
   }
   
+ 
 
+}
+
+function randomizeRestaurant(){
+  var restaurantId = acceptedRest[Math.floor(Math.random() * acceptedRest.length)];
+  foundRest = [restaurantId]
+  foundRestIndex = 0;
+  
+  findCardInfo();
+  clearEverything("Found a Restaurant to you");
+}
+
+function clearEverything(text){
+  document.getElementsByClassName("countContainer")[0].style.display = "none";
+  document.getElementsByClassName("panel-body")[0].style.display = "none";
+  document.getElementById("swiping").innerHTML = text;
 }
 
 function imageClick(id){
@@ -133,10 +147,14 @@ function findPlaceByID(callback) {
 function findCardInfo(){
   if(foundRestIndex < foundRest.length){
     findPlaceByID(updateCard);
-  } else{
+  } else if(foundRestIndex == foundRest.length && acceptedRest.length > 0){
+    randomizeRestaurant();
+  }else {
     updateCard();
   }
 }
+
+
 
 // function to fill card with details of results array one position at a time
 function updateCard(place) {
@@ -148,6 +166,7 @@ function updateCard(place) {
         var addr;
         var rating;
         var value;
+        console.log(foundRest);
         if(foundRestIndex < foundRest.length){
           title = place.name;
           details = place.formatted_phone_number;
@@ -155,15 +174,22 @@ function updateCard(place) {
           rating = "rating: " + place.rating;
           value = place.place_id;
           card.querySelector(".card-title").setAttribute("value" , value);
-          card.querySelector(".card-img-top").src = place.photos[0].getUrl();
+          if(place.photos != undefined){
+            card.querySelector(".card-img-top").src = place.photos[0].getUrl();
+          } else {
+            card.querySelector(".card-img-top").src = "images/FoodDelivery.jpg";
+          }
+
           card.querySelector('.btn').setAttribute("id", place.place_id);
           foundRestIndex++;
         } else{
           title = "no restaurant found";
           details = "Try searching using different parameters";
           addr = "";
+          rating = "";
 
           card.querySelector(".card-img-top").src = "../images/noParamsFound.jpg";
+          clearEverything("Sorry there are no more restaurants");
         }
 
         card.querySelector('.card-title').innerHTML = title;

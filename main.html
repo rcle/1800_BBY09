@@ -63,17 +63,17 @@
         
         <h3 id="budgetHeader">Budget</h3>
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group" id="budgetBtnGrp">
-            <input type="radio" value="1" class="btn-check budgetBtn" name="BudgetButton" id="btnradio1" autocomplete="off" checked>
-            <label class="btn" for="btnradio1">$</label>
+            <input type="radio" value="1" class="btn-check" name="BudgetButton" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">$</label>
           
-            <input type="radio" value="2" class="btn-check budgetBtn" name="BudgetButton" id="btnradio2" autocomplete="off">
-            <label class="btn" for="btnradio2">$$</label>
+            <input type="radio" value="2" class="btn-check" name="BudgetButton" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">$$</label>
           
-            <input type="radio" value="3" class="btn-check budgetBtn" name="BudgetButton" id="btnradio3" autocomplete="off">
-            <label class="btn" for="btnradio3">$$$</label>
+            <input type="radio" value="3" class="btn-check" name="BudgetButton" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">$$$</label>
 
-            <input type="radio" value="4" class="btn-check budgetBtn" name="BudgetButton" id="btnradio4" autocomplete="off">
-            <label class="btn" for="btnradio4">$$$$</label>
+            <input type="radio" value="4" class="btn-check" name="BudgetButton" id="btnradio4" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio4">$$$$</label>
         </div>
 
         <h3 id="ratingHeader">Rating</h3>
@@ -232,6 +232,7 @@
  
         function getMaxApprValue(){
             var maxApprValue = document.getElementById("apprNum");  
+            console.log(apprNum)
             localStorage.setItem("maxAppr", maxApprValue.getAttribute("value"));
         }
  

@@ -142,6 +142,10 @@
             id="thumbDownImg"
           />
         </button>
+
+        <template id="noRest">
+          <button id="genNow">Generate now</button>
+        </template>
       </div>
 
       <footer id="swipeFooter"></footer>
@@ -191,6 +195,7 @@
       window.onload = function () {
         insertName();
         initMap();
+        setToApprove();
       };
 
       function toParam() {

@@ -21,7 +21,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: blue;
+  background: #2f2fa2;
   cursor: pointer;
 }
 
@@ -29,6 +29,6 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: blue;
+  background: #2f2fa2;
   cursor: pointer;
 }

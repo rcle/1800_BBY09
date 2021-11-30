@@ -4,22 +4,22 @@
   grid-row-gap: 2%;
 }
 
-.btn{
+/* .btn{
   border: 1px #2f2fa2 solid;
   border-radius: 10%;
   background-color: white;
   color: #2f2fa2;
-}
+} */
 
 .btn:hover{
   background-color: #2f2fa2;
   color: white;
 }
 
-.btn:checked{
+/* .btn:checked{
   background-color: #2f2fa2;
   color: white;
-}
+} */
 
 .navbar{
   grid-row: 1;

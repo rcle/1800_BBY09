@@ -120,6 +120,11 @@
   grid-column: 1;
 }
 
+#noRest{
+  grid-column: 1;
+  justify-self: center;
+}
+
 #thumbDown{
   align-self: center;
   justify-self: center;
