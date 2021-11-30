@@ -196,6 +196,7 @@ function updateCard(place) {
         card.querySelector('.card-text').innerHTML = details;
         card.querySelector('.card-textaddr').innerHTML = addr;
         card.querySelector('.card-rating').innerHTML = rating;
+        card.querySelector('.favButton').setAttribute("src" ,"images/heartOutline.png" );
         
 }
 
@@ -217,7 +218,7 @@ function setFavourite(id) {
       var userField = db.collection("users").doc(user.uid);
       return userField
         .update({
-          favourites: firebase.firestore.FieldValue.arrayUnion(id),
+          favourite: firebase.firestore.FieldValue.arrayUnion(id),
         })
         .then(() => {
           console.log("Document successfully updated!");

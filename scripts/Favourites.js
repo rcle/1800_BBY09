@@ -97,6 +97,7 @@ Output: None
 */
 function addFavourite(place, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
+        console.log(place);
         var card = document.getElementsByClassName("col");
         var newcard;
         newcard = card[0].cloneNode(true);
@@ -111,7 +112,13 @@ function addFavourite(place, status) {
         newcard.querySelector('.card-text').innerHTML = details;
         newcard.querySelector('.card-textaddr').innerHTML = addr;
         newcard.querySelector('.card-rating').innerHTML = "Rating: " + rating;
-        newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
+
+        if(place.photos != undefined){
+            newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
+        } else {
+            newcard.querySelector(".card-img-top").src = "images/FoodDelivery.jpg";
+        }
+
 
         //give unique ids to all elements for future use
         newcard.querySelector('.card-title').setAttribute("id", "ctitle");
