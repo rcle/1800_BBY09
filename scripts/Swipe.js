@@ -220,19 +220,14 @@ function updateCard(place) {
         var container  =  document.getElementById("theRestCards");
         container.style.display = "grid";
         var card = document.getElementsByClassName("col")[0];
-        var title;
-        var details;
-        var addr;
-        var rating;
-        var value;
 
         if(foundRestIndex < foundRest.length){
-          title = place.name;
-          details = place.formatted_phone_number;
-          addr = place.adr_address;
-          rating = "rating: " + place.rating;
-          value = place.place_id;
-          card.querySelector(".card-title").setAttribute("value" , value);
+          card.querySelector('.card-title').innerHTML = place.name;
+          card.querySelector('.card-text').innerHTML = place.formatted_phone_number;
+          card.querySelector('.card-textaddr').innerHTML = place.adr_address;
+          card.querySelector('.card-rating').innerHTML = "rating: " + place.rating;
+          card.querySelector('.favButton').setAttribute("src" ,"../images/heartOutline.png" );
+          card.querySelector(".card-title").setAttribute("value" , place.place_id);
           
           if(place.photos != undefined){
             card.querySelector(".card-img-top").src = place.photos[0].getUrl();
@@ -243,19 +238,13 @@ function updateCard(place) {
           card.querySelector('.btn').setAttribute("id", place.place_id);
           foundRestIndex++;
         } else{
-          title = "no restaurant found";
-          details = "Try searching using different parameters";
-          addr = "";
-          rating = "";
-
-          card.querySelector(".card-img-top").src = "../images/noParamsFound.jpg";
-          clearEverything("Sorry there are no more restaurants");
+            card.querySelector('.card-title').innerHTML = "no restaurant found";
+            card.querySelector('.card-text').innerHTML = "Try searching using different parameters";
+            card.querySelector('.card-textaddr').innerHTML = "";
+            card.querySelector('.card-rating').innerHTML = "";
+            card.querySelector('.favButton').setAttribute("src" ,"../images/heartOutline.png" );
+            card.querySelector(".card-img-top").src = "../images/noParamsFound.jpg";
+            clearEverything("Sorry there are no more restaurants");
         }
-
-        card.querySelector('.card-title').innerHTML = title;
-        card.querySelector('.card-text').innerHTML = details;
-        card.querySelector('.card-textaddr').innerHTML = addr;
-        card.querySelector('.card-rating').innerHTML = rating;
-        card.querySelector('.favButton').setAttribute("src" ,"../images/heartOutline.png" );      
 }
 

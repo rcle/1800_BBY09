@@ -5,17 +5,18 @@
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
+This browser based web application to let users find a random restaurant near them
+in a fun and interactive way
 *Hi my name is Dennis. I'm excted about this project because git is fun
 *Hi my name is Ryan. I'm excited about this project because its fun to work in groups
-*Hi my name is Kyle. I'm excited about this project because I get to learn to learn how to create a web app
+
 	
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap 
-* ...
+* GooglemapsAPI
 	
 ## Content
 Content of the project folder:
@@ -23,25 +24,60 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── html                     # Folder containing HTML
+├── images                   # Folder containing images
+├── scripts                  # Folder containing scripts
+├── styles                   # Folder containing CSS
+├── .firebaserc
+├── firebase.json
+├── firestore.indexes.json
+├── firetsore.rules
+├── storage.rules
 └── README.md
 
+
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # 
-├── scripts                  # Folder for scripts
-    /blah.js                 # 
-├── styles                   # Folder for styles
-    /blah.css                # 
+├── html                     # Folder containing HTML
+    /404.html                # 
+    /favourites.html         #  
+    /index.html              #  
+    /main.html               #  
+    /swipe.html              #  
+├── images                   # Folder containing images
+    /FoodDelivery.jpg        #
+    /heartFilled.jpg         #
+    /heartOutline.jpg        #
+    /indexBackground.jpg     #
+    /indexBackground2.jpg    #
+    /noParamsFound.jpg       #
+    /thumbdown.png           #
+    /thumbDownLight.png      #
+    /thumbup.png             #
+    /thumbUpLight.png        #
+├── scripts                  # Folder containing scripts
+    /Favourites.js           #
+    /firebase.js             # Not tracked
+    /HelperFunctions.js      #
+    /Index.js                #
+    /main.js                 # 
+    /Swipe.js                # 
+├── styles                   # Folder containing CSS
+    /favourites_page.css     #
+    /index_page.css          #
+    /main.css                #
+    /my_style.css            #
+    /round_buttons.css       #
+    /slider.css              #
+    /swipe_page.css          # 
+└── README.md
 
 Firebase hosting files: 
-├── .firebaserc...
-
+├── .firebaserc
+├── .firebaserc
+├── firebase.json
+├── firestore.indexes.json
+├── firetsore.rules
+└── storage.rules
 
 ```
-
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
 
