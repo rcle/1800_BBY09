@@ -233,3 +233,21 @@ function setFavourite(id) {
     }
   });
 }
+
+function insertName() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      currentUser = db.collection("users").doc(user.uid);
+      currentUser.get().then((userDoc) => {
+        var user_Name = userDoc.data().name;
+        $("#name-goes-here").text(user_Name);
+      });
+    } else {
+      // No user is signed in.
+    }
+  });
+}
+
+function toParam() {
+  window.location.replace("main.html");
+}

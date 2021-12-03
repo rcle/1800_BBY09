@@ -1,7 +1,3 @@
-/*
-Javascript for the favourites page.
-*/
-
 
 /*
 Gets the favourites array stored in the favourite field in the user collection. 
@@ -11,6 +7,7 @@ Passes each id in the array to the findPlaceByID function if the user is logged 
 input: None
 Output: None
 */
+
 function getFavourite() {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -59,7 +56,7 @@ function searchCard() {
 }
 
 /*
-finds the name, rating, phone number, address and photo of a place. The place
+Finds the name, rating, phone number, address and photo of a place. The place
 is searched for using the given id and the getDetails function from the 
 google.maps.places library. Upon recieving the place information, calls the 
 addFavourite function. 
@@ -97,10 +94,8 @@ Output: None
 */
 function addFavourite(place, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
-        console.log(place);
         var card = document.getElementsByClassName("col");
-        var newcard;
-        newcard = card[0].cloneNode(true);
+        var newcard = card[0].cloneNode(true);
         var title = place.name;
         var details = place.formatted_phone_number;
         var addr = place.adr_address;
@@ -119,7 +114,6 @@ function addFavourite(place, status) {
             newcard.querySelector(".card-img-top").src = "../images/FoodDelivery.jpg";
         }
 
-
         //give unique ids to all elements for future use
         newcard.querySelector('.card-title').setAttribute("id", "ctitle");
         newcard.querySelector('.card-text').setAttribute("id", "ctext");
@@ -130,16 +124,8 @@ function addFavourite(place, status) {
     }
 }
 
-function imageClick(id){
-    var image = document.getElementById(id);
-    heartFilled = "/images/heartFilled.png";
-    heartOutline = "/images/heartOutline.png";
-    if(image.src.indexOf(heartFilled) > -1){
-        image.setAttribute("src" , heartOutline);
-    }else{
-        image.setAttribute("src" , heartFilled);
-    }
-}
+
+
 
 /*
 Removes favourite from the user's favourite collection if it is in the collection.
@@ -185,6 +171,8 @@ function toggleFavourite(id) {
         }
     });
 }
+
+
 
 
 

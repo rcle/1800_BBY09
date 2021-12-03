@@ -1,8 +1,9 @@
 /*
-Gets name name stored in name field from user
+Gets name of user stored in name field from the user collection
+in firebase.
 
-input: none
-output:string of Name or undefined
+Input: none
+Output:string of Name or undefined
 */
 function getName(){
     firebase.auth().onAuthStateChanged((user) => {
@@ -28,6 +29,9 @@ function to get selected radio button value for budget.
 getBudgetValue sets an array of elements named btnradio to budgetSelection.
 uses a loop to find which radio button is checked then stores that value in local storage
 upon see restaurant button being clicked.
+
+Input: none
+Output: none
 */
 function getBudgetValue() {
     var budgetSelection = document.getElementsByName('BudgetButton');
@@ -36,16 +40,18 @@ function getBudgetValue() {
         if (budgetSelection[i].checked) {
             localStorage.setItem("budget", budgetSelection[i].getAttribute("value"));
             break;
-        } else {
-            console.log("loop works")
-        }
-
+        } 
     }
 }
 
 /*
-function to get selected radio button value for rating.
-same as getBudgetValue function. Wrote separately for now bc I'm scared it won't work.
+function to get selected radio button value for rating from 
+the page and store it in local storage. uses a loop to find which 
+radio button is checked then stores that value in local storage
+upon see restaurant button being clicked.
+
+Input: none
+Output: none
 */
 
 function getRatingValue() {
@@ -55,30 +61,42 @@ function getRatingValue() {
         if (ratingSelection[i].checked) {
             localStorage.setItem("rating", ratingSelection[i].getAttribute("value"));
             break;
-        } else {
-            console.log("loop works")
         }
-
     }
 }
 
 
-// function to get slider value
+/* 
+Gets slider value from the page and store it in local storage.
+
+Input: none
+Output: none
+*/
 
 function getDistanceValue() {
     var distanceSelection = slider;
     localStorage.setItem("distance", distanceSelection.getAttribute("value"));
 }
 
-// function to get max approved restaurant value
+/* 
+Gets slider value from the page and store it in local storage.
+
+Input: none
+Output: none
+*/
 
 function getMaxApprValue() {
     var maxApprValue = document.getElementById("apprNum");
-    console.log(apprNum)
     localStorage.setItem("maxAppr", maxApprValue.getAttribute("value"));
 }
 
-// calls the above function to retrieve parameter values
+/*
+calls all of the getters for each of the respective parameters on the page.
+After this runs all of the button values will be stored into localstorage.
+
+Input: none
+Output: none
+*/
 function getValues() {
     getBudgetValue();
     getRatingValue();
@@ -89,7 +107,12 @@ function getValues() {
 
 
 
-//fills parameter values with most recently set values. 
+/*
+If values for the buttons on the
+
+Input: none
+Output: none
+*/
 function loadLocal() {
     if (localStorage.length > 0) {
         var budgetToCheck = document.getElementsByName("BudgetButton");
