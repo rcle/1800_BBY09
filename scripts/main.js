@@ -1,31 +1,5 @@
-/*
-Gets name of user stored in name field from the user collection
-in firebase.
-
-Input: none
-Output:string of Name or undefined
-*/
-function getName(){
-    firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        //gets user id
-        const uid = user.uid;
-
-        /*checks the db collection users, and gets the doc which
-         *contains all the information stored of the current user
-         */
-        db.collection("users").doc(uid).get().then( function (doc){
-            document.getElementById("name").innerHTML = doc.data().name;
-        });
-    } else {
-        console.log("no user logged in");
-    }
-    });
-}
-
- 
-/*
-function to get selected radio button value for budget.
+ /*
+Function to get selected radio button value for budget.
 getBudgetValue sets an array of elements named btnradio to budgetSelection.
 uses a loop to find which radio button is checked then stores that value in local storage
 upon see restaurant button being clicked.
@@ -45,7 +19,7 @@ function getBudgetValue() {
 }
 
 /*
-function to get selected radio button value for rating from 
+Function to get selected radio button value for rating from 
 the page and store it in local storage. uses a loop to find which 
 radio button is checked then stores that value in local storage
 upon see restaurant button being clicked.
@@ -53,7 +27,6 @@ upon see restaurant button being clicked.
 Input: none
 Output: none
 */
-
 function getRatingValue() {
     var ratingSelection = document.getElementsByName('RatingButton');
     console.log(ratingSelection);
@@ -72,7 +45,6 @@ Gets slider value from the page and store it in local storage.
 Input: none
 Output: none
 */
-
 function getDistanceValue() {
     var distanceSelection = slider;
     localStorage.setItem("distance", distanceSelection.getAttribute("value"));
@@ -84,14 +56,13 @@ Gets slider value from the page and store it in local storage.
 Input: none
 Output: none
 */
-
 function getMaxApprValue() {
     var maxApprValue = document.getElementById("apprNum");
     localStorage.setItem("maxAppr", maxApprValue.getAttribute("value"));
 }
 
 /*
-calls all of the getters for each of the respective parameters on the page.
+Calls all of the getters for each of the respective parameters on the page.
 After this runs all of the button values will be stored into localstorage.
 
 Input: none
@@ -108,7 +79,9 @@ function getValues() {
 
 
 /*
-If values for the buttons on the
+Populates the values for the buttons on the main page
+if their values are stored in local storage and the user navigates
+to the main page from the swiping page.
 
 Input: none
 Output: none

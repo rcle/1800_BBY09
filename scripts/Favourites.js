@@ -12,6 +12,8 @@ function getFavourite() {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             const uid = user.uid;
+            
+            //reads place_ID's from user's favourite field from firebase
             db.collection("users").doc(uid).get().then(function (doc) {
                 doc.data().favourite.forEach(place_id => findPlaceByID(place_id, addFavourite))
             });
@@ -53,26 +55,6 @@ function searchCard() {
         }
     })
 
-}
-
-/*
-Finds the name, rating, phone number, address and photo of a place. The place
-is searched for using the given id and the getDetails function from the 
-google.maps.places library. Upon recieving the place information, calls the 
-addFavourite function. 
- 
-Input: id, string thats the place_id of a restaurant to be searched for
-Input: callback, Callback function to be used when you get the id results.
-Output: None
-*/
-function findPlaceByID(id, callback) {
-    var request = {
-        placeId: id,
-        fields: ['name', 'rating', 'formatted_phone_number', 'adr_address', 'photo', 'place_id']
-    };
-
-    service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, callback);
 }
 
 /*
@@ -127,50 +109,7 @@ function addFavourite(place, status) {
 
 
 
-/*
-Removes favourite from the user's favourite collection if it is in the collection.
-Adds the favourite to the user's favourite collection if  it is not in the collection.
 
-Input: id - place_id of the restaurant to be removed from the collection
-Output: None
-*/
-function toggleFavourite(id) {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            
-            //gets the user's information from firebase
-            var userField = db.collection("users").doc(user.uid);
-            userField.get().then((doc) => {
-                
-                //Gets the favourite array from userdata 
-                var favArray = doc.data().favourite;
-
-                //checks if the placeId is in the favourite array
-                place_idIndex = favArray.indexOf(id);
-
-                //removes the placeId if it is in the list, adds it if its missing
-                if (place_idIndex > -1) {
-                    favArray.splice(place_idIndex, 1);
-                } else {
-                    favArray.push(id);
-                }
-
-                //update the favourite collection with the new array
-                userField.update({
-                    favourite: favArray
-                })
-                    .then(() => {
-                        console.log("Document successfully updated!");
-                    })
-                    .catch((error) => {
-                        console.error("Error updating document: ", error);
-                    });
-            })
-        } else {
-            console.log("no user logged in");
-        }
-    });
-}
 
 
 

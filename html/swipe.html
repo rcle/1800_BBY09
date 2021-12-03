@@ -70,7 +70,7 @@
       <!-- Swiping page -->
       <div class="container-fluid text-dark" id="userHeader">
         <div class="container p-1">
-          <h2 class="display-6">Hello, <span id="name-goes-here"></span></h2>
+          <h2 class="display-6">Hello, <span id="name"></span></h2>
           <h4 id = "swiping">Start swiping!</h4>
         </div>
       </div>
@@ -102,7 +102,7 @@
               <p class="card-textaddr">Location: street at streetname</p>
               <p class="card-rating">Location: street at streetname</p>
               <button
-                onclick="setFavourite(this.id)"
+                onclick="toggleFavourite(this.id)"
                 type="button"
                 class="btn btn-primary"
                 id="favBtn"
@@ -174,11 +174,16 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script src="../scripts/HelperFunctions.js"></script>
     <script src="../scripts/Swipe.js"></script>
+
     <script>
 
+      /*
+      triggers the following functions on page load
+      */
       window.onload = function () {
-        insertName();
+        getName();
         initMap();
         setToApprove();
       };
