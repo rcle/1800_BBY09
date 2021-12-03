@@ -18,8 +18,7 @@
 
 
   <!-- Optional styles and scripts of your own -->
-  <link type="text/css" href="styles/my_style.css" />
-  <link rel="stylesheet" href="styles/favourites_page.css">
+  <link rel="stylesheet" href="../styles/favourites_page.css">
 </head>
 
 <body>
@@ -59,7 +58,7 @@
           <p class="card-textaddr">Location: street at streetname</p>
           <p class="card-rating">Rating:</p>
           <button id="1" type="button" class="btn" onclick="toggleFavourite(this.id)" >
-            <img id="2" class="favButton" src="images/heartFilled.png" onclick="imageClick(this.id)"/>
+            <img id="2" class="favButton" src="../images/heartFilled.png" onclick="imageClick(this.id)"/>
           </button>
         </div>
       </div>
@@ -86,10 +85,9 @@
   <!----------MAKE SURE GOOGLE API KEY IS NOT HERE WHEN PUSHING----------------------------------------------------------->
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDgGf1bQFZEeFgtp-tsJz3Qu9iksttSDw&libraries=places">
   </script>
-  <script src="scripts/gmapsAPI.js"></script>
-  <script src="scripts/firebaseAPI.js"></script>
-  <script src="scripts/DBrequests.js"></script>
-  <script  src="scripts/Favourites.js"></script>
+  <script src="../scripts/firebaseAPI.js"></script>
+  <script src="../scripts/DBrequests.js"></script>
+  <script  src="../scripts/Favourites.js"></script>
 
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->
@@ -97,7 +95,7 @@
 
   <script>
     /*
-    triggesr the getFavourite function when the page loads.
+    triggers the getFavourite function when the page loads.
     */
     window.onload = function () {
         getFavourite();

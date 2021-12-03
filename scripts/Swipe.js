@@ -124,8 +124,8 @@ function clearEverything(text){
 
 function imageClick(id){
   var image = document.getElementById(id);
-  heartFilled = "images/heartFilled.png";
-  heartOutline = "images/heartOutline.png";
+  heartFilled = "../images/heartFilled.png";
+  heartOutline = "../images/heartOutline.png";
   if(image.src.indexOf(heartFilled) > -1){
       image.setAttribute("src" , heartOutline);
   }else{
@@ -177,7 +177,7 @@ function updateCard(place) {
           if(place.photos != undefined){
             card.querySelector(".card-img-top").src = place.photos[0].getUrl();
           } else {
-            card.querySelector(".card-img-top").src = "images/FoodDelivery.jpg";
+            card.querySelector(".card-img-top").src = "../images/FoodDelivery.jpg";
           }
 
           card.querySelector('.btn').setAttribute("id", place.place_id);
@@ -196,15 +196,16 @@ function updateCard(place) {
         card.querySelector('.card-text').innerHTML = details;
         card.querySelector('.card-textaddr').innerHTML = addr;
         card.querySelector('.card-rating').innerHTML = rating;
-        card.querySelector('.favButton').setAttribute("src" ,"images/heartOutline.png" );
+        card.querySelector('.favButton').setAttribute("src" ,"../images/heartOutline.png" );
         
 }
 
 //copied from favourites page
 function imageClick(id){
   var image = document.getElementById(id);
-  heartFilled = "images/heartFilled.png";
-  heartOutline = "images/heartOutline.png";
+  heartFilled = "/images/heartFilled.png";
+  heartOutline = "/images/heartOutline.png";
+  console.log(image.src);
   if(image.src.indexOf(heartFilled) > -1){
     image.setAttribute("src" , heartOutline);
   }else{

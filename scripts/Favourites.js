@@ -116,7 +116,7 @@ function addFavourite(place, status) {
         if(place.photos != undefined){
             newcard.querySelector(".card-img-top").src = place.photos[0].getUrl();
         } else {
-            newcard.querySelector(".card-img-top").src = "images/FoodDelivery.jpg";
+            newcard.querySelector(".card-img-top").src = "../images/FoodDelivery.jpg";
         }
 
 
@@ -132,8 +132,8 @@ function addFavourite(place, status) {
 
 function imageClick(id){
     var image = document.getElementById(id);
-    heartFilled = "images/heartFilled.png";
-    heartOutline = "images/heartOutline.png";
+    heartFilled = "/images/heartFilled.png";
+    heartOutline = "/images/heartOutline.png";
     if(image.src.indexOf(heartFilled) > -1){
         image.setAttribute("src" , heartOutline);
     }else{

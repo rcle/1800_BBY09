@@ -22,10 +22,3 @@ function getName(){
     });
 }
 
-/*
-Gets favourite data from user, not implemented yet, but to be used in the
-favourites page to populate the data within it
-
-inpupt: none
-output:array of favourites or undefined
-*/

@@ -19,9 +19,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
     <!-- Optional styles and scripts of your own -->
-    <link type="text/css" href="styles/my_style.css">
-    <link rel="stylesheet" href="styles/slider.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <link type="text/css" href="../styles/my_style.css">
+    <link rel="stylesheet" href="../styles/slider.css">
+    <link rel="stylesheet" href="../styles/main.css">
 
 </head>
 
@@ -45,9 +45,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="favourites.html">Favourite</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="history.html">History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Log Out</a>
@@ -124,8 +121,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
     <!-- Link to the api keys for your firebase project -->
-    <script src="scripts/firebaseAPI.js"></script>
-    <script src="scripts/DBrequests.js"></script>
+    <script src="../scripts/firebaseAPI.js"></script>
+    <script src="../scripts/DBrequests.js"></script>
+    <script src="../scripts/main.js"></script>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
@@ -138,32 +136,16 @@
             window.localStorage.clear();
         }
 
-        //fills parameter values with most recently set values. 
-        function loadLocal() {
-            if (localStorage.length > 0) {
-                var budgetToCheck = document.getElementsByName("BudgetButton");
-                var budgetButtonIndex = window.localStorage.getItem("budget") - 1;
-                budgetToCheck[budgetButtonIndex].checked = true;
-
-                var ratingToCheck = document.getElementsByName("RatingButton");
-                var ratingButtonIndex = window.localStorage.getItem("rating") - 1;
-                ratingToCheck[ratingButtonIndex].checked = true;
-
-                var slider = document.getElementById("sliderVal");
-                var sliderClass = document.getElementsByClassName("slider");
-                slider.innerHTML = localStorage.getItem("distance");
-                sliderClass[0].setAttribute("value", localStorage.getItem("distance"));
-
-                var maxApprCheck = document.getElementById("apprNum");
-                maxApprCheck.setAttribute("value", localStorage.getItem("maxAppr"));
-            }
-        }
+        /*
+        Adds an event listener to the seeRest button, so onclick it gets the values
+        in the local storage, then goes to the swipe.html page.
+        */
+        document.getElementById("seeRest").addEventListener("click", function(){
+                getValues().then(function(){
+                window.location.replace("swipe.html")
+            });
+        });
  
-        //global var for budget selection
-        //var budgetSelection;
-        //var ratingSelection;
- 
-        // slider script
         var slider = document.getElementById("myRange");
         var output = document.getElementById("sliderVal");
         output.innerHTML = slider.value; // Display the default slider value
@@ -174,84 +156,12 @@
             slider.setAttribute("value", this.value);
         }
         
-        // update maxAppr value
+        // update the max approved restaurants
         var approved = document.getElementById("apprNum");
         approved.oninput = function(){
             var numberValue = approved.value;
             approved.setAttribute("value", numberValue);
         }
- 
-        /*
-        function to get selected radio button value for budget.
-        getBudgetValue sets an array of elements named btnradio to budgetSelection.
-        uses a loop to find which radio button is checked then stores that value in local storage
-        upon see restaurant button being clicked.
-        */
-        function getBudgetValue(){
-            var budgetSelection = document.getElementsByName('BudgetButton');
-            console.log(budgetSelection);
-            for(i = 0; i < budgetSelection.length; i++){
-                if(budgetSelection[i].checked){
-                    localStorage.setItem("budget", budgetSelection[i].getAttribute("value"));
-                    break;
-                } else {
-                    console.log("loop works")
-                }
-               
-            }
-        }
- 
-        /*
-        function to get selected radio button value for rating.
-        same as getBudgetValue function. Wrote separately for now bc I'm scared it won't work.
-        */
- 
-        function getRatingValue(){
-            var ratingSelection = document.getElementsByName('RatingButton');
-            console.log(ratingSelection);
-            for(i = 0; i < ratingSelection.length; i++){
-                if(ratingSelection[i].checked){
-                    localStorage.setItem("rating", ratingSelection[i].getAttribute("value"));
-                    break;
-                } else {
-                    console.log("loop works")
-                }
-               
-            }
-        }
- 
- 
-        // function to get slider value
-       
-        function getDistanceValue(){
-            var distanceSelection = slider;
-            localStorage.setItem("distance", distanceSelection.getAttribute("value"));
-        }
- 
-        // function to get max approved restaurant value
- 
-        function getMaxApprValue(){
-            var maxApprValue = document.getElementById("apprNum");  
-            console.log(apprNum)
-            localStorage.setItem("maxAppr", maxApprValue.getAttribute("value"));
-        }
- 
-        // calls the above function to retrieve parameter values
-        function getValues(){
-                getBudgetValue();
-                getRatingValue();
-                getDistanceValue();
-                getMaxApprValue();
-                return Promise.resolve("values set"); 
-            }
-
-        document.getElementById("seeRest").addEventListener("click", function(){
-                getValues().then(function(){
-                window.location.replace("swipe.html")
-            });
-        });
-
-
     </script>
 
 
