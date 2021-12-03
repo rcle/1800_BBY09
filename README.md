@@ -28,6 +28,8 @@ Content of the project folder:
 ├── images                   # Folder containing images
 ├── scripts                  # Folder containing scripts
 ├── styles                   # Folder containing CSS
+├── 404.html                 #
+├── index.html               #   
 ├── .firebaserc
 ├── firebase.json
 ├── firestore.indexes.json
@@ -38,9 +40,7 @@ Content of the project folder:
 
 It has the following subfolders and files:
 ├── html                     # Folder containing HTML
-    /404.html                # 
     /favourites.html         #  
-    /index.html              #  
     /main.html               #  
     /swipe.html              #  
 ├── images                   # Folder containing images
