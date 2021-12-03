@@ -79,5 +79,9 @@ Firebase hosting files:
 ├── firetsore.rules
 └── storage.rules
 
+pictures obtained through 
+    https://www.pexels.com/search/website%20background/
+    https://dummyimage.com/
+    Created by ourselves
 ```
 
